@@ -1,0 +1,3 @@
+# CS436
+
+So what you are trying to do here is overwrite the return address located on the stack in the activation record that was created when calling func(). You have a buffer inside func() that is automatically allocated on the stack as well. What you are going to be required to do is fill the buffer (its length is arbitrary) and then corrupt the stack such that when we return from the function, the return address is now invalidated (its now the return address of some other function). This is called a buffer overflow attack. You need to figure out exactly how many bytes to write to accomplish this. Check the assembled code and also read up on activation records.
